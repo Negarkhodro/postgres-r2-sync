@@ -32,7 +32,7 @@ Before you begin, ensure you have:
     sudo apt-get update
     sudo apt-get install postgresql-client-16
     pg_dump --version
-    git clone https://github.com/yourusername/postgres-backup.git
+    git clone https://github.com/raminfp/postgres-r2-sync.git
     cd postgres-backup
 ```
 
