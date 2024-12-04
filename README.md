@@ -76,6 +76,15 @@ Run the backup tool:
 ```bash
 ./postgres-backup
 ```
+Steps to Set Up a Cron Job:
+```bash
+crontab -e
+```
+Add the following line to schedule the job:
+```bash
+0 0 * * * /path/to/postgres-backup
+```
+`0 0 * * *`  specifies that the job runs at midnight (00:00) every day.
 
 ## Backup Process
 
