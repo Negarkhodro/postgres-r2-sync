@@ -109,10 +109,14 @@ The tool performs these steps:
 
 ```
 .
-├── main.go            # Main application logic
-├── database.go        # Database backup functions
-├── r2_upload.go       # R2 upload functions
-├── go.mod             # Go module dependencies
-├── go.sum             # Dependency checksums
-└── .env               # Environment configuration (gitignored)
+├── database
+      └── database.go
+├── entity
+      └── r2.go
+└── r2
+    └── r2_upload.go
+├── main.go
+├── go.mod
+├── go.sum
+└── .env
 ```
