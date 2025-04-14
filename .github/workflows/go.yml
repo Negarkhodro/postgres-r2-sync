@@ -32,11 +32,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.22'  # Use a stable version
+          go-version: '1.22'
 
       - name: Build
         run: go build -v -o ${{ matrix.output_name }} ./main.go
-        # If your main.go is elsewhere, adjust the path accordingly
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -52,7 +51,7 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ./artifacts  # Specify a download path
+          path: ./artifacts
 
       - name: List files
         run: ls -R ./artifacts
