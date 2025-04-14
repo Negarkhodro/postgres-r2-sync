@@ -6,6 +6,9 @@ on:
       - 'v*'
   workflow_dispatch:
 
+permissions:
+  contents: write  # Add this line for release creation permissions
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -29,10 +32,11 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.22'
+          go-version: '1.22'  # Use a stable version
 
       - name: Build
         run: go build -v -o ${{ matrix.output_name }} ./main.go
+        # If your main.go is elsewhere, adjust the path accordingly
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -47,13 +51,19 @@ jobs:
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v3
+        with:
+          path: ./artifacts  # Specify a download path
+
+      - name: List files
+        run: ls -R ./artifacts
+        shell: bash
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            app-linux-amd64/app-linux
-            app-windows-amd64/app-windows.exe
-            app-macos-amd64/app-macos
+            ./artifacts/app-linux-amd64/app-linux
+            ./artifacts/app-windows-amd64/app-windows.exe
+            ./artifacts/app-macos-amd64/app-macos
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
