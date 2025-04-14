@@ -83,6 +83,10 @@ crontab -e
 Add the following line to schedule the job:
 ```bash
 0 0 * * * /path/to/postgres-backup
+
+# execute every 1 minute automatically,
+* * * * * cd /root/ngr_online_diag/autobackup && ./postgres-r2-sync >> /var/log/pgsync.log 2>&1
+
 ```
 `0 0 * * *`  specifies that the job runs at midnight (00:00) every day.
 
