@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Add this line for release creation permissions
+  contents: write
 
 jobs:
   build:
@@ -39,7 +39,7 @@ jobs:
         # If your main.go is elsewhere, adjust the path accordingly
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.asset_name }}
           path: ${{ matrix.output_name }}
