@@ -36,6 +36,7 @@ func main() {
 		log.Fatalf("Configuration error: %v", err)
 	}
 
+	//
 	// Create a ServiceDB instance using the configuration
 	serviceDB := &database.ServiceDB{BackupConfig: *cfg}
 
